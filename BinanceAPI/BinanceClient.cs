@@ -3,6 +3,7 @@ using BinanceAPI.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
@@ -46,10 +47,14 @@ namespace BinanceAPI
             this.streamsCache = new Dictionary<string, IBinanceStream>();
             this.streamsCacheLocker = new object();
 
-            this.httpClient = new HttpClient()
+            this.httpClient = new HttpClient(new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            })
             {
                 BaseAddress = new Uri(config?.BaseEndpoint ?? DEFAULT_BASE_ENDPOINT)
             };
+            this.httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate");
 
             this.apiKey = config?.ApiKey ?? string.Empty;
             this.secretKey = config?.SecretKey ?? string.Empty;
