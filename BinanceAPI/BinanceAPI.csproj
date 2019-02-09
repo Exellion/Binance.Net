@@ -4,12 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Konstantin Ivanov</Authors>
     <Company />
     <Description>Simple API wrapper for Binance exchange</Description>
     <PackageTags>Binance API c# .net</PackageTags>
     <PackageId>BinanceAPI.NET.Client</PackageId>
+    <PackageReleaseNotes>-add gzip support</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
